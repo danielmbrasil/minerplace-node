@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+  fastify:
+    build:
+      context: ./payments
+    restart: unless-stopped
+    ports:
+      - "4001:4001"
